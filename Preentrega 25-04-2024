@@ -46,7 +46,7 @@ REFERENCES Miembros(ID_Miembros)
 CREATE TABLE IF NOT EXISTS Álbumes(
 ID_álbum int not null auto_increment,
 Nombre VARCHAR(20),
-Año_de_lanzamiento VARCHAR(20),
+Año_de_lanzamiento date,
 Productor VARCHAR(20),
 Cantidad_de_Canciones int,
 ID_banda int,
