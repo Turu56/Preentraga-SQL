@@ -1,0 +1,83 @@
+use bandas;
+insert into bandas (`bandas`.`ID_Banda`,
+    `bandas`.`Nombre_de_Banda`,
+    `bandas`.`País_de_Origen`,
+    `bandas`.`Género`,
+    `bandas`.`Pagina_web`)
+    values (1, "Arch_Enemy" , "Suecia", "melodic_death_metal", "www.archenemy.net");
+
+use bandas;
+use miembros;
+insert into miembros (`miembros`.`ID_Miembros`,
+    `miembros`.`Nombre`,
+    `miembros`.`intrumento`,
+    `miembros`.`Fecha_que_se_unio`,
+    `miembros`.`ID_Banda`)
+    values (1, "Michael Amiembros", "guitarra", "1995-01-01", 1);
+    insert into miembros (`miembros`.`ID_Miembros`,
+    `miembros`.`Nombre`,
+    `miembros`.`intrumento`,
+    `miembros`.`Fecha_que_se_unio`,
+    `miembros`.`ID_Banda`)
+    values (2, "Daniel Erlandsson" , "bateria", "1995-01-01", 1);
+    insert into miembros (`miembros`.`ID_Miembros`,
+    `miembros`.`Nombre`,
+    `miembros`.`intrumento`,
+    `miembros`.`Fecha_que_se_unio`,
+    `miembros`.`ID_Banda`)
+    values (3, "Sharlee D'Angelo" , "bajo", "1998-01-01", 1);
+    insert into miembros (`miembros`.`ID_Miembros`,
+    `miembros`.`Nombre`,
+    `miembros`.`intrumento`,
+    `miembros`.`Fecha_que_se_unio`,
+    `miembros`.`ID_Banda`)
+    values (4, "Alissa White-Gluz" , "Voz", "2014-01-01", 1);
+    insert into miembros (`miembros`.`ID_Miembros`,
+    `miembros`.`Nombre`,
+    `miembros`.`intrumento`,
+    `miembros`.`Fecha_que_se_unio`,
+    `miembros`.`ID_Banda`)
+	values (5, "Joey Concepcion" , "guitarra", "2023-01-01", 1);
+ 
+create or replace view Guitarristas as
+	(select *
+    from miembros
+    where (intrumento = "guitarra")
+    );
+
+select *
+from guitarristas;
+
+create or replace view Bateristas as
+	(select *
+    from miembros
+    where (intrumento = "bateria")
+    );
+
+select *
+from Bateristas;
+
+create function `convertir_entradas_en_pesos_a_dolares`
+(Precio_del_Dolar int, Id int)
+returns int
+deterministic
+Begin
+	declare Precio_en_Dolares int;
+    	set Precio_en_Dolares = (Precio_del_Dolar * 
+		(select Precio_en_Pesos 
+        		from entradas 
+        		where (Id = ID_entradas)
+)
+	);
+	return Precio_en_Dolares;
+end
+
+create function convertir_entradas_en_pesos_a_dolares
+(Precio_del_Dolar int, Id int)
+returns int
+deterministic
+begin
+	
+
+
+end
